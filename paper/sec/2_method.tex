@@ -1,0 +1,29 @@
+\section{Method}
+\label{sec:method}
+
+\paragraph{Data.}
+We use TF Flowers~\cite{tfflowers}, which contains 3,670 Flickr photos of five flower types
+(633--898 per class, CC BY 2.0).
+With random seed 0 (Python \texttt{random}), we set aside a balanced \textbf{test set of 100 images per class},
+never used for training, and draw a balanced \texttt{base} training set of 200 images per class from the rest;
+every other training set changes exactly one property of it (\cref{tab:results}).
+For RQ1, only roses is reduced to 50, 20, or 5 images, and each smaller set is a subset of the larger one.
+For RQ2, the first 10, 30, or 50\% of each class (in the seed-0 order) are relabeled as the other four classes in
+equal shares; every class keeps 200 images, so only the labels change.
+The file list of every split is released as CSV.
+
+\paragraph{Model and training.}
+All models are trained in TM's image project with its default settings: 50 epochs, batch size 16, and learning
+rate 0.001.
+TM keeps a pretrained MobileNetV2~\cite{sandler2018mobilenetv2} (width 0.35, 224$\times$224 input) frozen and
+trains only a small head (Dense 100, ReLU, 5-way softmax) with Adam~\cite{kingma2015adam}.
+It holds out a random 15\% of the uploaded images for its own validation, so about 170 images per class are
+actually used for training.
+Models were trained on Nov.~15, 2026 in the TM web app (one new project each) and exported as Keras \texttt{.h5}.
+
+\paragraph{Evaluation.}
+Test images are preprocessed the same way as in TM's export: RGB, center crop, resize to 224$\times$224,
+and scale to $[-1,1]$.
+We report per-class accuracy (recall), overall accuracy, macro-F1, and confusion matrices.
+TM's internal validation scores are not used: they rest on 1--30 images per class and, under noise, on noisy labels.
+Evaluation uses Python 3.10 and TensorFlow 2.15.1; evaluating all seven models takes about 36\,s on CPU.

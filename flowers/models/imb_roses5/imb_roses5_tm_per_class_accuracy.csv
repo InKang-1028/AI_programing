@@ -1,0 +1,6 @@
+class,accuracy,n_test_samples
+daisy,0.87,30
+dandelion,0.97,30
+roses,0.00,1
+sunflowers,0.97,30
+tulips,0.93,30

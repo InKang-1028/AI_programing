@@ -1,0 +1,8 @@
+# Python 3.10. Same packages as environment.yml, for use without Conda:
+#   python3.10 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+# Teachable Machine exports Keras 2 .h5 models; TF >= 2.16 (Keras 3) cannot load them.
+# For an NVIDIA GPU, install tensorflow[and-cuda]==2.15.1 instead (evaluation also runs on CPU).
+tensorflow==2.15.1
+numpy==1.26.4
+opencv-python==4.11.0.86
+matplotlib==3.10.9

@@ -1,0 +1,35 @@
+\section{Experiments}
+\label{sec:experiments}
+
+\input{sec/table_results}
+
+The balanced \texttt{base} model reaches 86.6\%; its most common mistake is confusing roses and tulips
+(9 images each way), which share red and pink petals.
+
+\paragraph{RQ1: class imbalance.}
+As roses training images drop from 200 to 50, 20, and 5, roses accuracy falls from 84\% to 59, 36, and 2\%.
+Even a 4:1 imbalance costs 25 points.
+The other four classes, in contrast, hardly change (82--93\%), and tulips actually improves from 82 to 90\%.
+\Cref{fig:main}c explains why: the roses the model no longer recognizes are mostly labeled as tulips
+(9, 29, 56, and 80 of 100), the class they already resembled.
+With only 5 roses, the model predicts tulips 184 times for 100 real tulips, so tulip precision drops to 49\%.
+Overall accuracy (72.6\%) understates this failure, since roses is only 20\% of the test set;
+macro-F1 (66.5\%) reveals it more clearly.
+
+\paragraph{RQ2: label noise.}
+With 10, 30, and 50\% of the labels flipped, accuracy falls from 86.6\% to 81.6, 72.0, and 54.2\%:
+about 0.5 points per 1\% of noise up to 30\%, then 0.9 points per 1\% beyond it.
+Unlike imbalance, noise hurts all classes about equally: the per-class band in \cref{fig:main}b stays narrow,
+and macro-F1 stays within 0.1 points of accuracy.
+The extra errors still fall mostly between similar classes; tulips predicted as roses rise from 9 to 18 and 23
+at 0, 30, and 50\% noise.
+Even at 50\% noise, the correct label remains the most common one in each class (50\% versus 12.5\% for each
+wrong class), which keeps the model well above chance (20\%).
+
+\paragraph{Comparison and limitations.}
+Flipping 100 labels (\texttt{noise10}) costs 5.0 points across all classes, whereas removing 150 roses
+(\texttt{imb\_roses50}) costs 3.6 points overall but 25 on roses.
+Each model was trained once, and with 100 test images per class the 95\% interval is about $\pm$7 points per class
+($\pm$3 overall), so small gaps such as tulips rising from 82 to 90\% are only suggestive.
+We also tested a single minority class and symmetric synthetic noise, whereas real label errors tend to cluster
+between similar classes.

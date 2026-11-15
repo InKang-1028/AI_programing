@@ -1,4 +1,4 @@
-name: tm_muffin
+name: tm_flowers
 channels:
   - conda-forge
   - nodefaults
@@ -7,6 +7,8 @@ dependencies:
   - pip
   - pip:
       # Teachable Machine exports Keras 2 .h5 models; TF >= 2.16 (Keras 3) cannot load them.
+      # [and-cuda] adds the CUDA libraries for an NVIDIA GPU; evaluation also runs on CPU.
       - tensorflow[and-cuda]==2.15.1
-      - numpy<2
-      - opencv-python
+      - numpy==1.26.4
+      - opencv-python==4.11.0.86
+      - matplotlib==3.10.9
