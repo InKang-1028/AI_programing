@@ -175,10 +175,11 @@ lines = [
     r"\begin{table}[t]",
     r"\centering\footnotesize",
     r"\setlength{\tabcolsep}{1.7pt}",
-    r"\begin{tabular}{lcc|" + "c" * len(classes) + "|cc}",
+    r"\begin{tabular}{lcc" + "c" * len(classes) + "cc}",
     r"\toprule",
-    r"& \multicolumn{2}{c|}{Training set} & \multicolumn{" + str(len(classes))
-    + r"}{c|}{Per-class accuracy} & & \\",
+    r"& \multicolumn{2}{c}{Training set} & \multicolumn{" + str(len(classes))
+    + r"}{c}{Per-class accuracy} & & \\",
+    r"\cmidrule(lr){2-3} \cmidrule(lr){4-" + str(3 + len(classes)) + "}",
     r"Model & \#Ros. & Noise & " + " & ".join(short[c] for c in classes) + r" & Acc. & F1 \\",
     r"\midrule",
 ]

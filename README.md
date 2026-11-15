@@ -1,6 +1,6 @@
 # How Training Data Shapes an Image Classifier: Class Imbalance and Label Noise in Teachable Machine
 
-EF2039 Introduction to AI Programming, PA04. Report: [`PA04_report.pdf`](PA04_report.pdf) (LaTeX source in `paper/`).
+EF2039 Introduction to AI Programming, PA04. Report: [`PA4_Inkang_Jeong.pdf`](PA4_Inkang_Jeong.pdf).
 
 - **RQ1 (class imbalance):** how does shrinking one class (roses: 200 → 50 → 20 → 5 training images) affect accuracy?
 - **RQ2 (label noise):** how does accuracy change when 10, 30, or 50% of the training labels are wrong?
