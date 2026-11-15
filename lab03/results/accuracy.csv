@@ -1,0 +1,5 @@
+model,muffin_correct,muffin_total,muffin_acc(%),chihuahua_correct,chihuahua_total,chihuahua_acc(%),overall_correct,overall_total,overall_acc(%)
+model_1_c10_m10,33,50,66.0,50,50,100.0,83,100,83.0
+model_2_c20_m20,33,50,66.0,50,50,100.0,83,100,83.0
+model_3_c20_m2,1,50,2.0,50,50,100.0,51,100,51.0
+model_4_c200_m200,42,50,84.0,49,50,98.0,91,100,91.0

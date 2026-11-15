@@ -1,0 +1,12 @@
+name: tm_muffin
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # Teachable Machine exports Keras 2 .h5 models; TF >= 2.16 (Keras 3) cannot load them.
+      - tensorflow[and-cuda]==2.15.1
+      - numpy<2
+      - opencv-python
